@@ -1,0 +1,13 @@
+{
+  "float": [
+    {
+      "name": "title_font_size",
+      "value": "24"
+    },
+    {
+      "name": "title_font_weight",
+      "value": "700"
+    }
+
+  ]
+}
