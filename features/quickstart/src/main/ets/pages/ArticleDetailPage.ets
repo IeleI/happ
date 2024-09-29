@@ -1,13 +1,25 @@
 import { ArticleClass } from '../model/ArticleClass';
 import { webview } from '@kit.ArkWeb';
+import { emitter } from '@kit.BasicServicesKit';
+import { Speaker } from 'utils';
 
 @Component
 export struct ArticleDetailPage {
   @State articleDetail: ArticleClass | null = null;
   @Consume('articlePathStack') articlePathStack: NavPathStack;
+  @State isClicked: boolean = false;
+  speaker: Speaker = new Speaker();
 
   aboutToAppear(): void {
     this.articleDetail = this.articlePathStack.getParamByName('articleDetail')[0] as ArticleClass;
+
+    emitter.on("eventId", () => {
+      this.isClicked = false;
+    });
+  }
+
+  aboutToDisappear(): void {
+    this.speaker?.shutdownEngine();
   }
 
   build() {
@@ -40,6 +52,18 @@ export struct ArticleDetailPage {
         .height(56)
 
         WebComponent({ articleDetail: this.articleDetail })
+
+        Image(this.isClicked ? $r('app.media.ic_AI_read_on') : $r('app.media.ic_AI_read_normal'))
+          .width(40)
+          .height(40)
+          .onClick(() => {
+            this.isClicked = !this.isClicked;
+            if (this.isClicked === true) {
+              this.speaker.startSpeak(this.articleDetail!.brief)
+            } else {
+              this.speaker.stopSpeak();
+            }
+          })
       }
       .padding({ left: 16, right: 16 })
       .width('100%')

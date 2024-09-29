@@ -1,10 +1,11 @@
-import { BannerView } from '../view/BannerView'
-import { EnablementView } from '../view/EnablementView'
-import { TutorialView } from '../view/TutorialView'
+import { BannerView } from '../view/BannerView';
+import { EnablementView } from '../view/EnablementView';
+import { TutorialView } from '../view/TutorialView';
 import { ArticleDetailPage } from './ArticleDetailPage';
 import { ArticleClass } from '../model/ArticleClass';
 import { BannerClass } from '../model/BannerClass';
 import { BannerDetailPage } from './BannerDetailPage';
+import { Header } from '../view/Header';
 
 
 @Component
@@ -23,14 +24,7 @@ export struct QuickStartPage {
   build() {
     Navigation(this.articlePathStack) {
       Column() {
-        Text($r('app.string.index_1_title'))
-          .fontSize($r('app.float.title_font_size'))
-          .fontWeight(700)
-          .width('100%')
-          .textAlign(TextAlign.Start)
-          .padding({ left: 16 })
-          .fontFamily('HarmonyHeiTi-Bold')
-          .lineHeight(33)
+        Header()
 
         Scroll() {
           Column() {
