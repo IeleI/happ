@@ -6,7 +6,6 @@ export struct CourseLearning {
 
   build() {
     Column() {
-      // Web({ src: 'http://www.huawei.com', controller: this.webviewController }).domStorageAccess(true)
       Web({ src: $rawfile('course_learning/index.html'), controller: this.webviewController }).domStorageAccess(true)
     }
   }

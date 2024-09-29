@@ -1,7 +1,7 @@
 import { NavBarItem, NavBarItemType } from '../view/NavBarItem';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Section, KnowledgeMapContent } from '../view/KnowledgeMapContent';
+import { KnowledgeMapContent, Section } from '../view/KnowledgeMapContent';
 
 @Preview
 @Component
@@ -43,7 +43,7 @@ export struct KnowledgeMap {
   }
 
   build() {
-    Navigation() {
+    Navigation(this.knowledgeMapPageStack) {
       Scroll() {
         Column() {
           Text('知识地图')

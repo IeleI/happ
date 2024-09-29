@@ -3,11 +3,11 @@ import { KnowledgeMap } from 'map';
 import { QuickStartPage } from 'quickstart';
 
 @Entry
+@Preview
 @Component
 struct Index {
   @State currentIndex: number = 0;
-
-  private tabsController : TabsController = new TabsController();
+  private tabsController: TabsController = new TabsController();
 
   @Builder
   tabBarBuilder(title: string, targetIndex: number, selectedIcon: Resource, unselectIcon: Resource) {
@@ -34,7 +34,7 @@ struct Index {
   }
 
   build() {
-    Tabs({ barPosition: BarPosition.End }) {
+    Tabs({ barPosition: BarPosition.End, controller: this.tabsController }) {
       TabContent() {
         QuickStartPage()
       }

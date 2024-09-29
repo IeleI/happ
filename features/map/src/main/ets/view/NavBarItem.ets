@@ -41,12 +41,12 @@ export struct NavBarItem {
     .padding({ left: 12, right: 12 })
     .backgroundColor('#F1F3F5')
     .onClick(() => {
-      const index =  Number(this.navBarItem.order)  - 1;
+      const index = Number(this.navBarItem.order) - 1;
       this.currentNavBarIndex = index;
+      this.knowledgeMapPageStack.replacePath({ name: "KnowledgeMapContent" })
     })
     .backgroundColor(
-      this.currentNavBarIndex === Number(this.navBarItem.order) - 1 ?
-        '#1A0A59F7' :
+      this.currentNavBarIndex === Number(this.navBarItem.order) - 1 ? '#1A0A59F7' :
       Color.Transparent
     )
   }
