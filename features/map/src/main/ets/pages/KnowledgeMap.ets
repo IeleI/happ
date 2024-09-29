@@ -92,6 +92,6 @@ export struct KnowledgeMap {
       .edgeEffect(EdgeEffect.Spring)
     }.hideTitleBar(true)
     .navDestination(this.PageMap)
-    .mode(NavigationMode.Stack)
+    .mode(NavigationMode.Auto)
   }
 }

@@ -1,10 +1,12 @@
 import { ArticleClass } from '../model/ArticleClass';
 import { bufferToString } from '../util/BufferUtil';
+import { BreakpointType, BreakpointTypeEnum } from 'utils';
 
 @Component
 export struct EnablementView {
   @State enablementList: Array<ArticleClass> = []
   @Consume('articlePathStack') articlePathStack: NavPathStack;
+  @StorageProp('currentBreakpoint') currentBreakpoint: string = BreakpointTypeEnum.MD;
 
   aboutToAppear(): void {
     this.getEnablementDataFromJSON()
@@ -34,7 +36,7 @@ export struct EnablementView {
               .onClick(() => {
                 this.articlePathStack.pushPathByName('articleDetail', item)
               })
-          }
+          }.width(new BreakpointType<Length>({ sm: 160, md: 164, lg: 180 }).getValue(this.currentBreakpoint))
         }, (item: ArticleClass) => item.id)
       }
       .rowsTemplate('1fr')
@@ -42,6 +44,7 @@ export struct EnablementView {
       .scrollBar(BarState.Off)
       .height(169)
       .padding({ top: 2, left: 16, right: 16 })
+      .columnsGap(new BreakpointType<Length>({ sm: 8, md: 12, lg: 16 }).getValue(this.currentBreakpoint))
     }
     .margin({ top: 18 })
     .alignItems(HorizontalAlign.Start)
