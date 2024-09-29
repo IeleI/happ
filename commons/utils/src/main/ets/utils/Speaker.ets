@@ -3,12 +3,14 @@ import { BusinessError, emitter } from '@kit.BasicServicesKit';
 
 export class Speaker {
   ttsEngine?: textToSpeech.TextToSpeechEngine;
+
   initParamsInfo: textToSpeech.CreateEngineParams = {
     language: 'zh-CN',
     person: 0,
     online: 1,
     extraParams: { "style": 'interaction-broadcast', "locate": 'CN', "name": 'EngineName' }
-  };
+  }
+
   speakListener?: textToSpeech.SpeakListener;
 
   initListener() {
